@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/wentanbai/Desktop/code/tensorflow/model.ckpt"
+all_model_checkpoint_paths: "/Users/wentanbai/Desktop/code/tensorflow/model.ckpt"
