@@ -1,0 +1,36 @@
+version: '3'
+services:
+
+######################
+ cassandra0:
+  image: cassandra:latest
+  container_name: cassandra0
+  ports:
+   - 9042:9042
+   - 9016:9016
+   - 7199:7199
+   - 8778:8778
+  environment:
+   - CASSANDRA_START_RPC=true
+
+########################
+ cassandra1:
+  image: cassandra:latest
+  container_name: cassandra1
+  command: /bin/bash -c "sleep 60 && /docker-entrypoint.sh cassandra -f"
+  ports:
+   - 9142:9042
+  links:
+   - cassandra0:seed
+  environment:
+   - CASSANDRA_SEEDS=seed
+
+##########################
+ mytest:
+  image: webai/test0:latest
+  container_name: test0
+  ports:
+    - 8888:5000
+  links:
+    - cassandra0:cassandra
+

@@ -1,0 +1,23 @@
+docker
+flask
+tensorflow
+Pillow
+
+
+
+# our base image
+FROM alpine:3.5
+
+# Install python and pip
+#RUN apk add --update py-pip
+RUN apk add --no-cache python3
+
+# install Python modules needed by the Python app
+#COPY requirements.txt /Users/wentianbai/Desktop/docker_flask/
+#RUN pip3 install --no-cache-dir -r /Users/wentianbai/Desktop/docker_flask/requirements.txt
+
+## copy files required for the app to run
+#COPY app.py /Users/wentianbai/Desktop/docker_flask/
+#
+## run the application
+#CMD ["python", "/Users/wentianbai/Desktop/docker_flask/app.py"]
